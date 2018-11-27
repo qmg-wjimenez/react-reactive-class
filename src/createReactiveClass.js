@@ -16,6 +16,7 @@ export default function createReactiveClass(tag) {
 
     componentWillReceiveProps(nextProps) {
       this.subscribe(nextProps);
+      this.setState(pickProps(nextProps, (key, value) => !isRxObservable(value)));
     }
 
     componentWillUnmount() {
