@@ -18,8 +18,7 @@
   "scripts": {
     "clean": "rimraf lib dist",
     "build:lib": "babel src --out-dir lib",
-    "build:umd": "webpack src/index.js dist/react-reactive-class.js --display-modules --progress && NODE_ENV=production webpack src/index.js dist/react-reactive-class.min.js --display-modules --progress",
-    "build": "npm run build:lib && npm run build:umd",
+    "build": "npm run build:lib",
     "lint": "eslint src",
     "prepublish": "npm run clean && npm run build",
     "postinstall": "npm run prepublish",
@@ -35,7 +34,6 @@
     "eslint-config-airbnb": "0.0.8",
     "eslint-plugin-react": "^3.3.0",
     "react": "^0.14.0-rc1",
-    "rimraf": "^2.4.3",
-    "webpack": "^1.11.0"
+    "rimraf": "^2.4.3"
   }
 }
