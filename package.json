@@ -20,7 +20,7 @@
     "build:lib": "babel src --out-dir lib",
     "build": "yarn run build:lib",
     "lint": "eslint src",
-    "prepublish": "yarn run clean && npm run build",
+    "prepublish": "yarn run clean && yarn run build",
     "postinstall": "yarn run prepublish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
