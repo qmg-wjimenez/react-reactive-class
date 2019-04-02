@@ -18,10 +18,10 @@
   "scripts": {
     "clean": "rimraf lib dist",
     "build:lib": "babel src --out-dir lib",
-    "build": "npm run build:lib",
+    "build": "yarn run build:lib",
     "lint": "eslint src",
-    "prepublish": "npm run clean && npm run build",
-    "postinstall": "npm run prepublish",
+    "prepublish": "yarn run clean && npm run build",
+    "postinstall": "yarn run prepublish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jas Chen",
