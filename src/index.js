@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './react-14';
 import createReactiveClass from './createReactiveClass';
 
 export function reactive(reactClass) {
