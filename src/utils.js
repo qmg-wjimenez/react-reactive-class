@@ -1,8 +1,5 @@
 export function isRxObservable(o) {
-  const valid = (
-    typeof o === 'object'
-      && typeof o.subscribeOnNext === 'function'
-  );
+  const valid = typeof o === 'object' && typeof o.subscribe === 'function';
 
   return valid;
 }

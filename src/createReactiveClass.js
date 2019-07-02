@@ -1,5 +1,5 @@
 import React from 'react';
-import {isRxObservable, pickProps} from './utils';
+import { isRxObservable, pickProps } from './utils';
 
 export default function createReactiveClass(tag) {
   class ReactiveClass extends React.Component {
@@ -16,7 +16,9 @@ export default function createReactiveClass(tag) {
 
     componentWillReceiveProps(nextProps) {
       this.subscribe(nextProps);
-      this.setState(pickProps(nextProps, (key, value) => !isRxObservable(value)));
+      this.setState(
+        pickProps(nextProps, (key, value) => !isRxObservable(value)),
+      );
     }
 
     componentWillUnmount() {
@@ -24,7 +26,7 @@ export default function createReactiveClass(tag) {
     }
 
     addPropListener(name, prop$) {
-      return prop$.subscribeOnNext((value) => {
+      return prop$.subscribe(value => {
         // don't re-render if value is the same.
         if (value === this.state[name]) {
           return;
@@ -53,7 +55,7 @@ export default function createReactiveClass(tag) {
     }
 
     unsubscribe() {
-      this.subscriptions.forEach(subscription => subscription.dispose());
+      this.subscriptions.forEach(subscription => subscription.unsubscribe());
       this.subscriptions = null;
     }
 
@@ -62,7 +64,7 @@ export default function createReactiveClass(tag) {
         return null;
       }
 
-      const finalProps = pickProps(this.state, (key) => key !== 'mount');
+      const finalProps = pickProps(this.state, key => key !== 'mount');
       return React.createElement(tag, finalProps);
     }
   }
